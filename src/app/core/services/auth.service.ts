@@ -57,6 +57,10 @@ export class AuthService {
           this.saveUserToCookie(mockRes.user);
         }
         this.state$.next({ token: mockRes.accessToken, user: mockRes.user });
+          // mark logged in for browser routing checks
+          if (this.isBrowser) {
+            try { localStorage.setItem('login', 'true'); } catch {}
+          }
         return of(mockRes).pipe(delay(400));
       }
 
@@ -73,6 +77,10 @@ export class AuthService {
           this.saveUserToCookie(res.user);
         }
         this.state$.next({ token: res.accessToken ?? null, user: res.user ?? null });
+        // mark logged in for browser routing checks
+        if (this.isBrowser && res?.accessToken) {
+          try { localStorage.setItem('login', 'true'); } catch {}
+        }
       })
     );
   }
@@ -81,6 +89,9 @@ export class AuthService {
     this.cookies.delete(TOKEN_KEY);
     this.cookies.delete(USER_KEY);
     this.state$.next({ token: null, user: null });
+    if (this.isBrowser) {
+      try { localStorage.removeItem('login'); } catch {}
+    }
     this.router.navigate([redirect]);
   }
 

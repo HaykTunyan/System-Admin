@@ -15,11 +15,14 @@ export class LoginRedirectGuard implements CanActivate {
       return true; // allow navigation when not in a browser (Vite/node)
     }
 
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.router.navigate(['/dashboard']);
-      return false;
-    }
+    try {
+      const loginFlag = localStorage.getItem('login');
+      if (loginFlag === 'true') {
+        this.router.navigate(['/dashboard']);
+        return false;
+      }
+    } catch {}
+
     return true;
   }
 }

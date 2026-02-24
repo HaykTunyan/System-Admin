@@ -32,8 +32,9 @@ export class AccountComponent implements OnInit {
   private fb = inject(FormBuilder);
 
   form!: FormGroup;
-  loading = false;
-  submitted = false;
+  loading: boolean = false;
+  submitted: boolean = false;
+  name: string = 'Hayk';
   avatarUrl = this.getDefaultAvatar();
 
   statusOptions = ['Active', 'Inactive', 'Suspended'];

@@ -2,4 +2,7 @@
 
 <div class="app-container">
   <router-outlet></router-outlet>
+  <ng-container *ngIf="loading$ | async">
+    <app-loading-spinner></app-loading-spinner>
+  </ng-container>
 </div>

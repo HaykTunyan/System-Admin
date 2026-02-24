@@ -18,6 +18,7 @@ import { ThemeService } from '../../../core/services/theme.service';
 export class HeaderComponent {
   themeService = inject(ThemeService);
   private router = inject(Router);
+  private auth = inject(AuthService);
 
   themes = this.themeService.getThemes();
   currentTheme = this.themeService.currentTheme;
@@ -35,10 +36,8 @@ export class HeaderComponent {
   }
 
   logout() {
-    // Implement logout logic here (e.g., clear auth tokens, redirect to login page)
-
-    console.log('User logged out');
-    this.router.navigate(['/login']);
+    // use AuthService to clear auth state and redirect
+    this.auth.logout();
   }
 
   navigateToHome() {
