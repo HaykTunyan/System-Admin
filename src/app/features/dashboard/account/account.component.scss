@@ -1,0 +1,147 @@
+.account-container {
+  padding: 1.5rem;
+  background-color: var(--mat-sys-surface);
+  min-height: 100%;
+}
+
+.account-card {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Avatar Section */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--mat-sys-surface-container-low);
+  border-radius: 8px;
+}
+
+.avatar-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--mat-sys-primary);
+  object-fit: cover;
+}
+
+.avatar-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar-label {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+  }
+}
+
+/* Form Sections */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h3 {
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Permissions */
+.permissions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.permissions-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.permissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--mat-sys-surface-container-low);
+  border-radius: 4px;
+
+  mat-checkbox {
+    margin: 0.25rem 0;
+  }
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Message */
+.success-message {
+  padding: 0.75rem 1rem;
+  background-color: #10b981;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

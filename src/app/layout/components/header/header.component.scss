@@ -1,0 +1,42 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.theme-button {
+  margin-left: 1rem;
+}
+
+::ng-deep {
+  .theme-menu {
+    .mat-mdc-menu-content {
+      padding: 0.5rem 0;
+    }
+
+    .mat-mdc-menu-item {
+      font-size: 0.875rem;
+
+      span {
+        &.active {
+          font-weight: 600;
+          color: var(--mat-sys-primary);
+        }
+      }
+    }
+  }
+}

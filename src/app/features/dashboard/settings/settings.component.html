@@ -1,0 +1,147 @@
+<div class="settings-container">
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-card-title>Settings</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="settings-form">
+        <!-- Localization Settings -->
+        <div class="form-section">
+          <h3>Localization & Region</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option *ngFor="let lang of languageOptions" [value]="lang">
+                {{ lang }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Timezone</mat-label>
+            <mat-select formControlName="timezone">
+              <mat-option *ngFor="let tz of timezoneOptions" [value]="tz">
+                {{ tz }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Date Format</mat-label>
+            <mat-select formControlName="dateFormat">
+              <mat-option *ngFor="let fmt of dateFormatOptions" [value]="fmt">
+                {{ fmt }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="form-section">
+          <h3>Notifications</h3>
+
+          <div class="toggle-group">
+            <div class="toggle-item">
+              <mat-slide-toggle formControlName="emailNotifications">
+                Email Notifications
+              </mat-slide-toggle>
+              <p class="toggle-description">Receive email alerts for important events</p>
+            </div>
+
+            <div class="toggle-item">
+              <mat-slide-toggle formControlName="pushNotifications">
+                Push Notifications
+              </mat-slide-toggle>
+              <p class="toggle-description">Receive push notifications on your devices</p>
+            </div>
+
+            <div class="toggle-item">
+              <mat-slide-toggle formControlName="weeklyReport">
+                Weekly Report
+              </mat-slide-toggle>
+              <p class="toggle-description">Receive weekly summary reports</p>
+            </div>
+
+            <div class="toggle-item">
+              <mat-slide-toggle formControlName="monthlyReport">
+                Monthly Report
+              </mat-slide-toggle>
+              <p class="toggle-description">Receive monthly detailed reports</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Settings -->
+        <div class="form-section">
+          <h3>Company Information</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Company Name</mat-label>
+            <input matInput formControlName="companyName" />
+            <mat-error *ngIf="form.get('companyName')?.invalid">Company name is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Company Email</mat-label>
+            <input matInput type="email" formControlName="companyEmail" />
+            <mat-error *ngIf="form.get('companyEmail')?.invalid">Valid email is required.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="form-section">
+          <h3>Security</h3>
+
+          <div class="toggle-item">
+            <mat-slide-toggle formControlName="twoFactorAuth">
+              Two-Factor Authentication
+            </mat-slide-toggle>
+            <p class="toggle-description">Enhance account security with 2FA</p>
+          </div>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Session Timeout (minutes)</mat-label>
+            <input matInput type="number" formControlName="sessionTimeout" min="5" max="240" />
+            <mat-hint>Auto-logout after inactivity</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- Team Color Settings -->
+        <div class="form-section">
+          <h3>Team Theme Color</h3>
+          <p class="color-description">Select a color for your team dashboard and branding</p>
+
+          <div class="color-palette">
+            <div
+              *ngFor="let color of teamColors"
+              class="color-option"
+              [style.backgroundColor]="color.hex"
+              [class.selected]="selectedColor === color.hex"
+              (click)="onColorSelect(color.hex)"
+              [title]="color.name"
+            >
+              <mat-icon *ngIf="selectedColor === color.hex" class="check-icon">check</mat-icon>
+              <span class="color-name">{{ color.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+            <mat-icon *ngIf="loading" class="spinner">progress_activity</mat-icon>
+            <span *ngIf="!loading">Save Settings</span>
+            <span *ngIf="loading">Saving...</span>
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="submitted" class="success-message">
+          ✓ Settings saved successfully!
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

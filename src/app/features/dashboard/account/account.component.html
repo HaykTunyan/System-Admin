@@ -1,0 +1,110 @@
+<div class="account-container">
+  <mat-card class="account-card">
+    <mat-card-header>
+      <mat-card-title>My Account</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="account-form">
+        <!-- Avatar Section -->
+        <div class="avatar-section">
+          <img [src]="avatarUrl" alt="Avatar" class="avatar-preview" />
+          <div class="avatar-controls">
+            <label for="avatarInput" class="avatar-label">Change Avatar</label>
+            <input
+              id="avatarInput"
+              type="file"
+              accept="image/*"
+              (change)="onAvatarChange($event)"
+              hidden
+            />
+          </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="form-section">
+          <h3>Personal Information</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+            <mat-error *ngIf="form.get('firstName')?.invalid">First name is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+            <mat-error *ngIf="form.get('lastName')?.invalid">Last name is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" />
+            <mat-error *ngIf="form.get('email')?.invalid">Valid email is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Birthday</mat-label>
+            <input matInput type="date" formControlName="birthday" />
+            <mat-error *ngIf="form.get('birthday')?.invalid">Birthday is required.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Status & Permissions -->
+        <div class="form-section">
+          <h3>Account Settings</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statusOptions" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="permissions-group">
+            <label class="permissions-label">Permissions</label>
+            <div class="permissions-list">
+              <mat-checkbox
+                *ngFor="let perm of permissions"
+                [checked]="form.get('permissions')?.value?.includes(perm.id)"
+                (change)="onPermissionToggle(perm.id, $event.checked)"
+              >
+                {{ perm.label }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment System -->
+        <div class="form-section">
+          <h3>Payment System</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Preferred Payment Method</mat-label>
+            <mat-select formControlName="paymentSystem">
+              <mat-option *ngFor="let system of paymentSystems" [value]="system">
+                {{ system }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+            <mat-icon *ngIf="loading" class="spinner">progress_activity</mat-icon>
+            <span *ngIf="!loading">Save Changes</span>
+            <span *ngIf="loading">Saving...</span>
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="submitted" class="success-message">
+          ✓ Account updated successfully!
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

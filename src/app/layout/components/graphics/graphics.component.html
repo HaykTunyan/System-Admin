@@ -1,0 +1,33 @@
+<div class="graphics-grid">
+
+  <!-- BAR CHART -->
+  <mat-card class="chart-card">
+    <mat-card-title>Monthly Performance</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="isBrowser" class="chart-container">
+        <canvas
+          baseChart
+          type="bar"
+          [data]="barChartData"
+          [options]="barOptions">
+        </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- LINE CHART -->
+  <mat-card class="chart-card">
+    <mat-card-title>Sales Trend</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="isBrowser" class="chart-container">
+        <canvas
+          baseChart
+          type="line"
+          [data]="lineChartDataConfig"
+          [options]="lineOptions">
+        </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

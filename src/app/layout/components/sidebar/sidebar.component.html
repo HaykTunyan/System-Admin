@@ -1,0 +1,12 @@
+<nav class="sidebar">
+    <mat-toolbar>
+        <span>System Admin</span>
+    </mat-toolbar>
+    <mat-nav-list class="nav-list">
+        <mat-list-item *ngFor="let link of navLinks" [routerLink]="link.route" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListItemIcon>{{ link.icon }}</mat-icon>
+            <span matListItemTitle>{{ link.label }}</span>
+        </mat-list-item>
+    </mat-nav-list>
+</nav>

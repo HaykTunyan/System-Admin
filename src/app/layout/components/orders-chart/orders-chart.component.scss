@@ -1,0 +1,29 @@
+.chart-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  height: 420px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tabs {
+  display: flex;
+  gap: 24px;
+  font-weight: 600;
+}
+
+.tabs span {
+  cursor: pointer;
+  color: #9aa5b1;
+}
+
+.tabs .active {
+  color: #3b5bfd;
+  border-bottom: 2px solid #3b5bfd;
+  padding-bottom: 4px;
+}

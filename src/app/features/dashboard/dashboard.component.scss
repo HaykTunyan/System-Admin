@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+app-header {
+  flex: 0 0 auto;
+}
+
+.dashboard-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--mat-sys-surface);
+}
+
+app-sidebar {
+  flex: 0 0 250px;
+  background-color: var(--mat-sys-surface-container);
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--mat-sys-surface);
+  padding: 1.5rem;
+    padding-bottom: 5rem;
+}
+
+app-cards {
+  flex: 0 0 auto;
+}
+
+app-graphics {
+  flex: 1;
+  overflow: auto;
+}

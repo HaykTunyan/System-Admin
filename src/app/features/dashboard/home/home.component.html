@@ -1,0 +1,30 @@
+<div class="dashboard">
+
+  <section class="dashboard-section">
+    <app-cards [stats]="stats"></app-cards>
+  </section>
+
+  <section class="dashboard-section charts-grid">
+    <app-graphics
+      [barData]="barData"
+      [lineData]="salesData">
+    </app-graphics>
+  </section>
+
+  
+
+  <section class="dashboard-section">
+    <div class="section-header">
+      <h2>Recent Sales & Trades</h2>
+    </div>
+    <app-sales-trades></app-sales-trades>
+  </section>
+
+   <section class="dashboard-section">
+    <div class="section-header">
+      <h2>Recent Orders Sales</h2>
+    </div>
+    <app-orders-chart></app-orders-chart>
+  </section>
+
+</div>

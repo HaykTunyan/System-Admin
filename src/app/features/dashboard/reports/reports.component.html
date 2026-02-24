@@ -1,0 +1,26 @@
+<div class="reports-page">
+  <mat-card class="summary-card">
+    <mat-card-title>Reports</mat-card-title>
+    <mat-card-content>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-label">Total Orders</div>
+          <div class="metric-value">{{ ordersCount }}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Total Revenue</div>
+          <div class="metric-value">${{ totalRevenue | number:'1.2-2' }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="chart-card">
+    <mat-card-title>Recent Orders</mat-card-title>
+    <mat-card-content>
+      <canvas baseChart [data]="chartData" [options]="chartOptions" chartType="bar">
+      </canvas>
+    </mat-card-content>
+  </mat-card>
+
+</div>

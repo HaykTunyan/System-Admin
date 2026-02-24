@@ -1,0 +1,89 @@
+.users-container {
+  padding: 1.5rem;
+  background-color: var(--mat-sys-surface);
+}
+
+.users-card {
+  mat-card-header {
+    margin-bottom: 1.5rem;
+  }
+
+  mat-card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      background-color: var(--mat-sys-surface-container);
+      font-weight: 500;
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 2px solid var(--mat-sys-outline);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--mat-sys-outline-variant);
+    }
+
+    tr:hover {
+      background-color: var(--mat-sys-surface-container-low);
+    }
+  }
+}
+
+.role-badge,
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.role-badge {
+  &.role-admin {
+    background-color: #1e40af;
+    color: white;
+  }
+
+  &.role-editor {
+    background-color: #7c3aed;
+    color: white;
+  }
+
+  &.role-user {
+    background-color: #0891b2;
+    color: white;
+  }
+}
+
+.status-badge {
+  &.status-active {
+    background-color: #10b981;
+    color: white;
+  }
+
+  &.status-inactive {
+    background-color: #ef4444;
+    color: white;
+  }
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+}
+
+mat-paginator {
+  border-top: 1px solid var(--mat-sys-outline-variant);
+}

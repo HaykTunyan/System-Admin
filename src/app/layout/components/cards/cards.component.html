@@ -1,0 +1,11 @@
+<div class="cards-container">
+  <mat-card class="stat-card" *ngFor="let card of cards">
+    <mat-card-header>
+      <mat-icon [color]="card.color" class="card-icon">{{ card.icon }}</mat-icon>
+      <span class="card-title">{{ card.title }}</span>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-value">{{ card.value }}</div>
+    </mat-card-content>
+  </mat-card>
+</div>

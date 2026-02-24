@@ -1,0 +1,21 @@
+.graphics-grid {
+  display: grid;
+  grid-template-columns: 2fr;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .graphics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chart-card {
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.chart-container {
+  height: 260px;
+  width: 100%;
+}

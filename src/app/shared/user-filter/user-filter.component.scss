@@ -1,0 +1,45 @@
+
+.filter-container {
+      padding: 1rem;
+      background-color: var(--mat-sys-surface);
+      border-bottom: 1px solid var(--mat-sys-outline-variant);
+      margin-bottom: 1rem;
+   
+    }
+
+    .filter-form {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+   
+         align-items: center;
+    }
+    
+
+    .search-field {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .filter-field {
+      min-width: 150px;
+    }
+
+    button {
+      height: 56px;
+    }
+
+    @media (max-width: 768px) {
+      .filter-form {
+        flex-direction: column;
+      }
+
+      .search-field,
+      .filter-field {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
