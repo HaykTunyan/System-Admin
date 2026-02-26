@@ -25,6 +25,16 @@ import { Order } from '../../../core/models/order.model';
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent implements OnInit {
+
+  /**
+   * OrderHistoryComponent is responsible for displaying the user's past orders in a table format.
+   * It allows users to search through their orders, view details, and download invoices.
+   * The component uses Angular Material for UI elements and relies on OrderService to fetch order data.
+   * Key features:
+   * 
+   */
+
+
   orders: Order[] = [];
   allOrders: Order[] = [];
   selectedOrder: Order | null = null;

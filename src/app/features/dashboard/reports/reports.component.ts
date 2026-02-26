@@ -30,9 +30,9 @@ Chart.register(
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
+
 export class ReportsComponent implements OnInit {
 
-  
   ordersCount = 0;
   totalRevenue = 0;
 

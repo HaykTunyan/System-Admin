@@ -1,4 +1,14 @@
 # SystemAdmin
+## Charts
+
+The `GraphicsComponent` formerly relied on Chart.js. It now also includes a **Highcharts**
+example. To enable Highcharts support run:
+
+```bash
+npm install highcharts highcharts-angular
+```
+
+You can pass data to the component via the `highData` input; default values are provided.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
 

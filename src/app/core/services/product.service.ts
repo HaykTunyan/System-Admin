@@ -4,6 +4,7 @@ import { delay } from 'rxjs/operators';
 import { Product } from '../models/product.model';
 
 @Injectable({ providedIn: 'root' })
+
 export class ProductService {
   private mockProducts: Product[] = [
     {

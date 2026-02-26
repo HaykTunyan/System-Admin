@@ -3,6 +3,10 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { BaseChartDirective } from 'ng2-charts';
 
+// highcharts dependencies
+import * as Highcharts from 'highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import {
   Chart,
   BarController,
@@ -39,7 +43,8 @@ Chart.register(
   imports: [
     CommonModule,
     MatCardModule,
-    BaseChartDirective
+    BaseChartDirective,
+    HighchartsChartModule
   ],
   templateUrl: './graphics.component.html',
   styleUrls: ['./graphics.component.scss']
@@ -53,6 +58,11 @@ export class GraphicsComponent {
 
   @Input() barData: Array<{ label: string; value: number }> | null = null;
   @Input() lineData: Array<{ x: string; y: number }> | null = null;
+  @Input() highData: Array<{ label: string; value: number }> | null = null;
+
+  // Highcharts reference for template binding
+  Highcharts: typeof Highcharts = Highcharts;
+
 
   private defaultBar = [
     { label: 'Jan', value: 65 },
@@ -70,6 +80,15 @@ export class GraphicsComponent {
     { x: 'Apr', y: 2100 },
     { x: 'May', y: 2400 },
     { x: 'Jun', y: 2000 }
+  ];
+
+  private defaultHigh = [
+    { label: 'Jan', value: 29 },
+    { label: 'Feb', value: 71 },
+    { label: 'Mar', value: 106 },
+    { label: 'Apr', value: 129 },
+    { label: 'May', value: 144 },
+    { label: 'Jun', value: 176 }
   ];
 
   get barChartData(): ChartConfiguration<'bar'>['data'] {
@@ -95,6 +114,21 @@ export class GraphicsComponent {
         backgroundColor: 'rgba(118,75,162,0.15)',
         tension: 0.4,
         fill: true
+      }]
+    };
+  }
+
+  get highchartOptions(): Highcharts.Options {
+    const data = this.highData?.length ? this.highData : this.defaultHigh;
+    return {
+      chart: { type: 'column' },
+      title: { text: 'Highcharts Example' },
+      xAxis: { categories: data.map(d => d.label) },
+      yAxis: { title: { text: 'Value' } },
+      series: [{
+        name: 'Series',
+        type: 'column',
+        data: data.map(d => d.value)
       }]
     };
   }

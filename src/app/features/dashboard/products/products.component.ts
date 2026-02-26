@@ -30,14 +30,21 @@ import { ProductFormDialogComponent } from '../../../layout/components/add-produ
 })
 export class ProductsComponent implements OnInit {
 
+  /**
+   * ProductsComponent is responsible for displaying and managing the list of products in the dashboard.
+   * It allows users to view product details, search for products, and perform CRUD operations (Create, Read, Update, Delete) on products.
+   * The component uses Angular Material for UI elements and relies on ProductService to interact with product data.
+   * Key features:
+   * - Display products in a table with pagination and sorting
+   * - Search products by name or SKU
+   * - Open dialogs for adding/editing products and confirming deletions
+   */
+
   products: Product[] = [];
   allProducts: Product[] = [];
   displayedColumns: string[] = ['name', 'category', 'price', 'quantity', 'status', 'updatedAt', 'actions'];
 
   constructor(private productService: ProductService, private dialog: MatDialog) {}
-
-
-  
 
   ngOnInit(): void {
     // populate synchronously from local cache so UI shows products immediately
