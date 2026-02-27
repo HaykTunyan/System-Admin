@@ -1,11 +1,8 @@
 import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { BaseChartDirective } from 'ng2-charts';
 
-// highcharts dependencies
-import * as Highcharts from 'highcharts';
-import { HighchartsChartModule } from 'highcharts-angular';
+import { BaseChartDirective } from 'ng2-charts';
 
 import {
   Chart,
@@ -23,7 +20,7 @@ import {
   ChartOptions
 } from 'chart.js';
 
-// Chart.js components must be registered to be used in Angular components.
+// Register Chart.js components
 Chart.register(
   BarController,
   BarElement,
@@ -37,33 +34,38 @@ Chart.register(
   Legend
 );
 
+// Highcharts
+import Highcharts from 'highcharts';
+// import { HighchartsChartModule } from 'highcharts-angular';
+
 @Component({
   selector: 'app-graphics',
   standalone: true,
   imports: [
     CommonModule,
     MatCardModule,
-    BaseChartDirective,
-    HighchartsChartModule
+        BaseChartDirective        
   ],
   templateUrl: './graphics.component.html',
   styleUrls: ['./graphics.component.scss']
 })
 export class GraphicsComponent {
-  isBrowser = false;
+
+  isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+  // Inputs
   @Input() barData: Array<{ label: string; value: number }> | null = null;
   @Input() lineData: Array<{ x: string; y: number }> | null = null;
   @Input() highData: Array<{ label: string; value: number }> | null = null;
 
-  // Highcharts reference for template binding
+  // Highcharts reference
   Highcharts: typeof Highcharts = Highcharts;
 
-
+  // Default Data
   private defaultBar = [
     { label: 'Jan', value: 65 },
     { label: 'Feb', value: 72 },
@@ -91,6 +93,7 @@ export class GraphicsComponent {
     { label: 'Jun', value: 176 }
   ];
 
+  // Chart.js Bar Data
   get barChartData(): ChartConfiguration<'bar'>['data'] {
     const data = this.barData?.length ? this.barData : this.defaultBar;
     return {
@@ -103,7 +106,13 @@ export class GraphicsComponent {
     };
   }
 
-  get lineChartDataConfig(): ChartConfiguration<'line'>['data'] {
+  barOptions: ChartOptions<'bar'> = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
+  // Chart.js Line Data
+  get lineChartData(): ChartConfiguration<'line'>['data'] {
     const data = this.lineData?.length ? this.lineData : this.defaultLine;
     return {
       labels: data.map(d => d.x),
@@ -118,6 +127,12 @@ export class GraphicsComponent {
     };
   }
 
+  lineOptions: ChartOptions<'line'> = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
+  // Highcharts Options
   get highchartOptions(): Highcharts.Options {
     const data = this.highData?.length ? this.highData : this.defaultHigh;
     return {
@@ -126,29 +141,10 @@ export class GraphicsComponent {
       xAxis: { categories: data.map(d => d.label) },
       yAxis: { title: { text: 'Value' } },
       series: [{
-        name: 'Series',
         type: 'column',
+        name: 'Series',
         data: data.map(d => d.value)
       }]
     };
   }
-
-  barOptions: ChartOptions<'bar'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: { grid: { display: false } },
-      y: { beginAtZero: true }
-    }
-  };
-
-  lineOptions: ChartOptions<'line'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    elements: { point: { radius: 3 } },
-    scales: {
-      x: { grid: { display: false } },
-      y: { beginAtZero: true }
-    }
-  };
 }

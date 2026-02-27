@@ -13,7 +13,7 @@ import { ThemeService } from '../../../core/services/theme.service';
   standalone: true,
   imports: [CommonModule, MatToolbarModule, MatMenuModule, MatButtonModule, MatIconModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   themeService = inject(ThemeService);
@@ -31,13 +31,12 @@ export class HeaderComponent {
     this.router.navigate(['/dashboard/account']);
   }
 
-  navigateToSettings() {
-    this.router.navigate(['/dashboard/settings']);
+  logout() {
+    this.auth.logout();
   }
 
-  logout() {
-    // use AuthService to clear auth state and redirect
-    this.auth.logout();
+  navigateToSettings() {
+    this.router.navigate(['/dashboard/settings']);
   }
 
   navigateToHome() {

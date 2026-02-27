@@ -19,6 +19,7 @@ export class SidebarComponent {
     { label: 'Products', route: '/dashboard/products', icon: 'store' },
     { label: 'Orders', route: '/dashboard/orders', icon: 'shopping_cart' },
     { label: 'Reports', route: '/dashboard/reports', icon: 'assessment' },
-    { label: 'Settings', route: '/dashboard/settings', icon: 'settings' }
+    { label: 'Settings', route: '/dashboard/settings', icon: 'settings' },
+    { label: 'Help', route: '/dashboard/help', icon: 'help' }
   ];
 }

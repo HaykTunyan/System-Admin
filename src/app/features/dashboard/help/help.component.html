@@ -1,0 +1,75 @@
+<div class="help-container">
+  <div class="help-header">
+    <h1>Admin System Help & Guide</h1>
+    <p class="subtitle">Learn how to use all features of your Admin System</p>
+  </div>
+
+  <mat-accordion class="help-accordion">
+    <mat-expansion-panel *ngFor="let section of sections" class="help-section">
+      <mat-expansion-panel-header>
+        <mat-icon class="section-icon">{{ section.icon }}</mat-icon>
+        <span class="section-title">{{ section.title }}</span>
+      </mat-expansion-panel-header>
+      
+      <div class="section-content">
+        <p class="help-text" *ngFor="let line of section.content.split('\n')">
+          {{ line }}
+        </p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div class="help-footer">
+    <mat-card class="quick-access">
+      <div class="quick-access-header">
+        <mat-icon>login</mat-icon>
+        <h3>Quick Access</h3>
+      </div>
+      <div class="quick-links">
+        <a href="/dashboard" class="quick-link">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+        <a href="/dashboard/users" class="quick-link">
+          <mat-icon>people</mat-icon>
+          <span>Users</span>
+        </a>
+        <a href="/dashboard/products" class="quick-link">
+          <mat-icon>store</mat-icon>
+          <span>Products</span>
+        </a>
+        <a href="/dashboard/orders" class="quick-link">
+          <mat-icon>shopping_cart</mat-icon>
+          <span>Orders</span>
+        </a>
+        <a href="/dashboard/reports" class="quick-link">
+          <mat-icon>assessment</mat-icon>
+          <span>Reports</span>
+        </a>
+        <a href="/dashboard/settings" class="quick-link">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </a>
+        <a href="/dashboard/account" class="quick-link">
+          <mat-icon>account_circle</mat-icon>
+          <span>Account</span>
+        </a>
+      </div>
+    </mat-card>
+
+    <mat-card class="help-tips">
+      <div class="help-tips-header">
+        <mat-icon>info</mat-icon>
+        <h3>Pro Tips</h3>
+      </div>
+      <ul class="tips-list">
+        <li><strong>Keyboard Shortcuts:</strong> Use your browser's search (Ctrl+F) to find content on pages</li>
+        <li><strong>Navigation:</strong> Use the sidebar menu to quickly navigate between sections</li>
+        <li><strong>Search:</strong> Use search functions within each section to find specific items</li>
+        <li><strong>Filters:</strong> Apply filters to focus on relevant data</li>
+        <li><strong>Export:</strong> Export reports and data for external use</li>
+        <li><strong>Save:</strong> Always save changes before navigating away from a form</li>
+      </ul>
+    </mat-card>
+  </div>
+</div>

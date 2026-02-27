@@ -23,6 +23,7 @@ export const routes: Routes = [
       { path: 'orders', loadComponent: () => import('./features/dashboard/order-history/order-history.component').then(m => m.OrderHistoryComponent) },
       { path: 'settings', loadComponent: () => import('./features/dashboard/settings/settings.component').then(m => m.SettingsComponent) },
       { path: 'account', loadComponent: () => import('./features/dashboard/account/account.component').then(m => m.AccountComponent) },
+      { path: 'help', loadComponent: () => import('./features/dashboard/help/help.component').then(m => m.DashboardHelpComponent) },
     ]
   },
 ];
